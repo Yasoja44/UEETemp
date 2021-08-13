@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1097901537277",
+    "firebase_url": "https://demouee-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "demouee",
+    "storage_bucket": "demouee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1097901537277:android:f373213c7470896f2c8b94",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1097901537277-tdl3h3hs1sq1f4ejcccg8svg6jnqbtqj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1ufcf8gseC08KxQpee0o9GiUylkjIYjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1097901537277-tdl3h3hs1sq1f4ejcccg8svg6jnqbtqj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
