@@ -8,8 +8,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApplication">
-        <activity android:name=".ShowReview"></activity>
+        android:theme="@style/Theme.MyApplication"
+        >
+
+
+        <activity android:name=".New.Popup"
+            android:theme="@style/AppTheme.CustomTheme">
+
+        </activity>
+        <activity android:name=".ShowReview" />
         <activity android:name=".AddReview" />
         <activity
             android:name=".ProductDummy"
