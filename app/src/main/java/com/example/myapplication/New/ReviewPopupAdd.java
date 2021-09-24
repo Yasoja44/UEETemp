@@ -41,7 +41,7 @@ public class ReviewPopupAdd extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reviewPopupAdd);
+        setContentView(R.layout.activity_review_popup_add);
 
         ///////////Popup
         DisplayMetrics dm = new DisplayMetrics();

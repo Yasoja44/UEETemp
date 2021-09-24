@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/draw_yas2"
-    tools:context=".New.ReviewPopupAdd">
+    tools:context=".New.ReviewPopupUpdate">
 
 
 
