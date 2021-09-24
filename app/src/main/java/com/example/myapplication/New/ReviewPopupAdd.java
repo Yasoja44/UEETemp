@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class Popup extends AppCompatActivity implements View.OnClickListener{
+public class ReviewPopupAdd extends AppCompatActivity implements View.OnClickListener{
 
     RatingBar r;
     EditText t;
@@ -41,7 +41,7 @@ public class Popup extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_popup);
+        setContentView(R.layout.activity_reviewPopupAdd);
 
         ///////////Popup
         DisplayMetrics dm = new DisplayMetrics();
