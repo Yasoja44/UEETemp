@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+
 import com.example.myapplication.DB.Review;
 import com.example.myapplication.R;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +31,7 @@ public class ReviewPopupUpdate extends AppCompatActivity implements View.OnClick
 
     RatingBar r;
     EditText t;
-    Button b,b2;
+    Button b,b2,b3;
     DatabaseReference dbRef;
     Review review;
     String pID,uID;
@@ -55,6 +56,7 @@ public class ReviewPopupUpdate extends AppCompatActivity implements View.OnClick
         t = findViewById(R.id.reviewUpdateText);
         b = findViewById(R.id.btnUpdateReview);
         b2 = findViewById(R.id.btnDeleteReview);
+        b3 = findViewById(R.id.reviewPopupUpdateCancel);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -78,7 +80,13 @@ public class ReviewPopupUpdate extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.btnDeleteReview: Delete();
                 break;
+            case R.id.reviewPopupUpdateCancel: Exit();
+                break;
         }
+    }
+
+    public void Exit(){
+
     }
 
     public void Update() {

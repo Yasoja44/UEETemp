@@ -30,7 +30,7 @@ public class ReviewPopupAdd extends AppCompatActivity implements View.OnClickLis
 
     RatingBar r;
     EditText t;
-    Button b;
+    Button b,b2;
     DatabaseReference dbRef;
     Review review;
     String pID,uID;
@@ -54,7 +54,8 @@ public class ReviewPopupAdd extends AppCompatActivity implements View.OnClickLis
 
         r = findViewById(R.id.ratingBar6);
         t = findViewById(R.id.editTextTextPersonName4);
-        b = findViewById(R.id.button5);
+        b = findViewById(R.id.addReviewBtn);
+        b2 = findViewById(R.id.reviewPopupAddCancel);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -73,9 +74,15 @@ public class ReviewPopupAdd extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.button5: Submit();
+            case R.id.addReviewBtn: Submit();
+                break;
+            case R.id.reviewPopupAddCancel: Exit();
                 break;
         }
+    }
+
+    public void Exit(){
+
     }
 
     public void Submit() {

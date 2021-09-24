@@ -78,23 +78,6 @@
         app:layout_constraintTop_toBottomOf="@+id/reviewUpdateText" />
 
     <Button
-        android:id="@+id/reviewPopupUpdateCancel"
-        android:layout_width="54dp"
-        android:layout_height="50dp"
-
-        android:layout_marginTop="4dp"
-        android:background="#ffffff"
-        android:gravity="center"
-        android:onClick="onClick"
-        android:text="X"
-        android:textColor="#FB0000"
-        android:textSize="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/btnDeleteReview"
         android:layout_width="132dp"
         android:layout_height="47dp"
@@ -109,6 +92,17 @@
         app:layout_constraintHorizontal_bias="0.824"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reviewUpdateText" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_cancel_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

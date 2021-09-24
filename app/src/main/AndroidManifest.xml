@@ -9,10 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".New.ReviewPopupUpdate"></activity>
+        <activity android:name=".Delivery.DeliveryAdd" />
+        <activity
+            android:name=".New.ReviewPopupUpdate"
+            android:theme="@style/AppTheme.ReviewPopup" />
         <activity
             android:name=".New.ReviewPopupAdd"
-            android:theme="@style/AppTheme.CustomTheme"></activity>
+            android:theme="@style/AppTheme.ReviewPopup" />
         <activity android:name=".ShowReview" />
         <activity android:name=".AddReview" />
         <activity
