@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.New.ReviewPopupAdd;
+import com.example.myapplication.New.ReviewPopupUpdate;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +27,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ShowReview extends AppCompatActivity implements View.OnClickListener{
 
@@ -33,15 +35,19 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
     TextView t;
     RatingBar r;
     String pID,uID;
-    int total=0,count=0;
+    int count=0;
+    float total = (float) 0.0;
     Button b;
     Bundle extras;
+
+    Boolean exists = false;
 
     FloatingActionButton fb;
 
     private static final String TAG = "Show";
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mNames2 = new ArrayList<>();
+    private ArrayList<Float> mRating = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
 
     @Override
@@ -79,7 +85,7 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
                     //);
 
 
-                    int temp= Integer.parseInt(showSnapshot.child("rating").getValue().toString());
+                    float temp= Float.parseFloat(showSnapshot.child("rating").getValue().toString());
                     Rate(temp);
 
 
@@ -110,11 +116,14 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
                 for (DataSnapshot showSnapshot: dataSnapshot.getChildren()) {
                     Log.d(TAG, "initImageBitmaps: started");
                     mImageUrls.add("https://www.howtogeek.com/wp-content/uploads/2020/03/delivery-food.jpg.pagespeed.ce.8e-lIOJeD5.jpg");
-                    mNames.add("Review: " + showSnapshot.child("review").getValue().toString() + "\n" +
-                            "Rating: " + showSnapshot.child("rating").getValue().toString() + "\n" +
-                            "User ID: " + showSnapshot.child("userID").getValue().toString() + "\n" +
-                            "Product ID: " + showSnapshot.child("productID").getValue().toString() + "\n\n"
-                    );
+//                    mNames.add("Review: " + showSnapshot.child("review").getValue().toString() + "\n" +
+//                            "Rating: " + showSnapshot.child("rating").getValue().toString() + "\n" +
+//                            "User ID: " + showSnapshot.child("userID").getValue().toString() + "\n" +
+//                            "Product ID: " + showSnapshot.child("productID").getValue().toString() + "\n\n"
+//                    );
+                    mNames.add(showSnapshot.child("userID").getValue().toString());
+                    mNames2.add(showSnapshot.child("review").getValue().toString());
+                    mRating.add(Float.parseFloat(showSnapshot.child("rating").getValue().toString()));
                     initRecyclerView();
                 }
             }
@@ -129,13 +138,13 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
     private void initRecyclerView() {
         Log.d(TAG, "initRecyclerView: started");
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        YasojaRecyclerViewAdapter adapter = new YasojaRecyclerViewAdapter(mNames,mNames2,mImageUrls,this);
+        YasojaRecyclerViewAdapter adapter = new YasojaRecyclerViewAdapter(mNames,mNames2,mRating,mImageUrls,this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
 
-    public void Rate(int tot) {
+    public void Rate(float tot) {
 
 
         count += 1;
@@ -172,16 +181,61 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
 //    }
 
     public void Submit2() {
-        Intent intent = new Intent(this, ReviewPopupAdd.class);
+
+        isHere();
+
         extras = new Bundle();
         extras.putString("PRODUCT_ID", pID);
         extras.putString("USER_ID", uID);
-        intent.putExtras(extras);
-        Toast toast = Toast.makeText(getApplicationContext(),
-                "This is a message displayed in a Toast",
-                Toast.LENGTH_SHORT);
 
-        toast.show();
+        Intent intent;
+        if(exists) {
+            intent = new Intent(this, ReviewPopupAdd.class);
+            intent.putExtras(extras);
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Exists",
+                    Toast.LENGTH_SHORT);
+
+            toast.show();
+
+        }else{
+            intent = new Intent(this, ReviewPopupUpdate.class);
+            intent.putExtras(extras);
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Not Exists",
+                    Toast.LENGTH_SHORT);
+
+            toast.show();
+        }
         startActivity(intent);
+
+
+    }
+
+    public Boolean isHere(){
+
+        dbRef = FirebaseDatabase.getInstance().getReference();
+        Query checkQuery = dbRef.child("Review").orderByChild("userID").equalTo(uID);
+
+        checkQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+                for (DataSnapshot checkSnapshot : dataSnapshot.getChildren()) {
+                    if(Objects.requireNonNull(checkSnapshot.child("productID").getValue()).toString().equals(pID)){
+                        exists = true;
+
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+        return exists;
     }
 }

@@ -30,11 +30,10 @@ public class ReviewPopupAdd extends AppCompatActivity implements View.OnClickLis
 
     RatingBar r;
     EditText t;
-    Button b,b2;
+    Button b;
     DatabaseReference dbRef;
     Review review;
     String pID,uID;
-    Boolean exists = false;
     Map<String,Object> updateMap;
 
 
@@ -64,7 +63,7 @@ public class ReviewPopupAdd extends AppCompatActivity implements View.OnClickLis
         uID = extras.getString("USER_ID");
 
         review = new Review();
-        exists = isHere();
+
 
         b.setOnClickListener(this);
 
@@ -76,43 +75,12 @@ public class ReviewPopupAdd extends AppCompatActivity implements View.OnClickLis
         switch (view.getId()) {
             case R.id.button5: Submit();
                 break;
-            case R.id.button3: Delete();
-                break;
         }
     }
 
     public void Submit() {
 
-        if (exists) {
 
-            Toast.makeText(getApplicationContext(), "If", Toast.LENGTH_SHORT).show();
-
-            dbRef = FirebaseDatabase.getInstance().getReference();
-            Query updateQuery = dbRef.child("Review").orderByChild("userID").equalTo(uID);
-
-            updateMap = new HashMap<>();
-            updateMap.put("userID",uID);
-            updateMap.put("productID",pID);
-            updateMap.put("rating",(int) r.getRating());
-            updateMap.put("review",t.getText().toString().trim());
-
-            updateQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                    for (DataSnapshot updateSnapshot : dataSnapshot.getChildren()) {
-                        if(updateSnapshot.child("productID").getValue().toString().equals(pID)){
-
-                            updateSnapshot.getRef().updateChildren(updateMap);
-                            Toast.makeText(getApplicationContext(), "Successfully Updated", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                }
-            });
-        } else {
             Toast.makeText(getApplicationContext(), "Else", Toast.LENGTH_SHORT).show();
 
 
@@ -137,54 +105,9 @@ public class ReviewPopupAdd extends AppCompatActivity implements View.OnClickLis
                 Toast.makeText(getApplicationContext(), "Invalid Contact No or ID", Toast.LENGTH_SHORT).show();
             }
         }
-    }
-
-    public Boolean isHere(){
-        dbRef = FirebaseDatabase.getInstance().getReference();
-        Query checkQuery = dbRef.child("Review").orderByChild("userID").equalTo(uID);
-
-        checkQuery.addListenerForSingleValueEvent(new ValueEventListener() {
 
 
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
 
-                for (DataSnapshot checkSnapshot : dataSnapshot.getChildren()) {
-                    if(Objects.requireNonNull(checkSnapshot.child("productID").getValue()).toString().equals(pID)){
-                        exists = true;
 
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-
-        return exists;
-    }
-
-    public void Delete() {
-
-        dbRef = FirebaseDatabase.getInstance().getReference();
-        Query deleteQuery = dbRef.child("Review").orderByChild("userID").equalTo(uID);
-
-        deleteQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot deleteSnapshot: dataSnapshot.getChildren()) {
-                    if(Objects.requireNonNull(deleteSnapshot.child("productID").getValue()).toString().equals(pID)) {
-                        deleteSnapshot.getRef().removeValue();
-                        Toast.makeText(getApplicationContext(), "Successfully Removed", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
 }

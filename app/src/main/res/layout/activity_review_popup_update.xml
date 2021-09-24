@@ -8,7 +8,6 @@
     tools:context=".New.ReviewPopupUpdate">
 
 
-
     <EditText
         android:id="@+id/reviewUpdateText"
         android:layout_width="314dp"
@@ -79,6 +78,23 @@
         app:layout_constraintTop_toBottomOf="@+id/reviewUpdateText" />
 
     <Button
+        android:id="@+id/reviewPopupUpdateCancel"
+        android:layout_width="54dp"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="4dp"
+        android:background="#ffffff"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="X"
+        android:textColor="#FB0000"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/btnDeleteReview"
         android:layout_width="132dp"
         android:layout_height="47dp"
@@ -93,4 +109,6 @@
         app:layout_constraintHorizontal_bias="0.824"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reviewUpdateText" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,11 +26,114 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class ReviewPopupUpdate extends AppCompatActivity {
+public class ReviewPopupUpdate extends AppCompatActivity implements View.OnClickListener{
+
+    RatingBar r;
+    EditText t;
+    Button b,b2;
+    DatabaseReference dbRef;
+    Review review;
+    String pID,uID;
+    Map<String,Object> updateMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review_popup_update);
+
+        ///////////Popup
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+
+        getWindow().setLayout((int)(width*.8),(int)(height*.6));
+        //////////
+
+        r = findViewById(R.id.ratingBarUpdateReview);
+        t = findViewById(R.id.reviewUpdateText);
+        b = findViewById(R.id.btnUpdateReview);
+        b2 = findViewById(R.id.btnDeleteReview);
+
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+
+        pID = extras.getString("PRODUCT_ID");
+        uID = extras.getString("USER_ID");
+
+        review = new Review();
+
+
+        b.setOnClickListener(this);
+        b2.setOnClickListener(this);
+
+
     }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btnUpdateReview: Update();
+                break;
+            case R.id.btnDeleteReview: Delete();
+                break;
+        }
+    }
+
+    public void Update() {
+
+
+            dbRef = FirebaseDatabase.getInstance().getReference();
+            Query updateQuery = dbRef.child("Review").orderByChild("userID").equalTo(uID);
+
+            updateMap = new HashMap<>();
+            updateMap.put("userID",uID);
+            updateMap.put("productID",pID);
+            updateMap.put("rating",(int) r.getRating());
+            updateMap.put("review",t.getText().toString().trim());
+
+            updateQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot updateSnapshot : dataSnapshot.getChildren()) {
+                        if(updateSnapshot.child("productID").getValue().toString().equals(pID)){
+
+                            updateSnapshot.getRef().updateChildren(updateMap);
+                            Toast.makeText(getApplicationContext(), "Successfully Updated", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+
+    }
+
+    public void Delete() {
+
+        dbRef = FirebaseDatabase.getInstance().getReference();
+        Query deleteQuery = dbRef.child("Review").orderByChild("userID").equalTo(uID);
+
+        deleteQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot deleteSnapshot: dataSnapshot.getChildren()) {
+                    if(Objects.requireNonNull(deleteSnapshot.child("productID").getValue()).toString().equals(pID)) {
+                        deleteSnapshot.getRef().removeValue();
+                        Toast.makeText(getApplicationContext(), "Successfully Removed", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
 }

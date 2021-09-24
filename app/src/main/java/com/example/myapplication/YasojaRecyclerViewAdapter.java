@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,15 +22,18 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class YasojaRecyclerViewAdapter extends RecyclerView.Adapter<YasojaRecyclerViewAdapter.ViewHolder>  {
 
     private static final String TAG = "test.sliit.recyclerview.RecyclerViewAdapter";
-    private ArrayList<String> mImageNames = new ArrayList<>();
+
     private ArrayList<String> mImage = new ArrayList<>();
+    private ArrayList<String> mImageNames = new ArrayList<>();
     private ArrayList<String> mImageNames2 = new ArrayList<>();
+    private ArrayList<Float> mImageRating = new ArrayList<>();
 
     private Context mContext;
-    public YasojaRecyclerViewAdapter(ArrayList<String> mImageNames,ArrayList<String> mImageNames2, ArrayList<String>
+    public YasojaRecyclerViewAdapter(ArrayList<String> mImageNames,ArrayList<String> mImageNames2,ArrayList<Float> mImageRating ,ArrayList<String>
             mImage, Context mContext) {
         this.mImageNames = mImageNames;
         this.mImageNames2 = mImageNames2;
+        this.mImageRating = mImageRating;
         this.mImage = mImage;
         this.mContext = mContext;
     }
@@ -51,6 +55,7 @@ public class YasojaRecyclerViewAdapter extends RecyclerView.Adapter<YasojaRecycl
                 .into(holder.image);
         holder.imageName.setText(mImageNames.get(position));
         holder.imageName2.setText(mImageNames2.get(position));
+        holder.imageRating.setRating(mImageRating.get(position));
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,12 +73,14 @@ public class YasojaRecyclerViewAdapter extends RecyclerView.Adapter<YasojaRecycl
         CircleImageView image;
         TextView imageName;
         TextView imageName2;
+        RatingBar imageRating;
         RelativeLayout parentLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.person_photo);
             imageName = itemView.findViewById(R.id.person_name);
             imageName2 = itemView.findViewById(R.id.person_name2);
+            imageRating = itemView.findViewById(R.id.ratingBar7);
             parentLayout = itemView.findViewById(R.id.parent_layout);
         }
     }
