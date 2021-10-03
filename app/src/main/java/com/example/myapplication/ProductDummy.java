@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.example.myapplication.Delivery.DeliveryAdd;
+import com.example.myapplication.Delivery.DeliveryAdd2;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,12 +22,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-public class ProductDummy extends AppCompatActivity {
+public class ProductDummy extends AppCompatActivity implements View.OnClickListener{
 
     TextView t1,t2,t3;
     RatingBar r1,r2,r3;
     EditText t;
     Bundle extras;
+    Button b;
 
 
     @Override
@@ -75,17 +79,13 @@ public class ProductDummy extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public void onClick(View view) {
-//        switch (view.getId()) {
-//            case R.id.ratingBar: Submit1();
-//                break;
-//            case R.id.ratingBar2: Submit2();
-//                break;
-//            case R.id.ratingBar3: Submit3();
-//                break;
-//        }
-//    }
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.button2: SubmitDe();
+                break;
+        }
+    }
 
     public void Submit1(){
         Intent intent = new Intent(this, ShowReview.class);
@@ -116,5 +116,11 @@ public class ProductDummy extends AppCompatActivity {
         intent.putExtras(extras);
         startActivity(intent);
     }
+
+    public void SubmitDe(){
+        Intent intent = new Intent(this, DeliveryAdd.class);
+        startActivity(intent);
+    }
+
 
 }

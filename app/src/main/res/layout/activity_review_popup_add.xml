@@ -8,11 +8,10 @@
     tools:context=".New.ReviewPopupAdd">
 
 
-
     <EditText
         android:id="@+id/editTextTextPersonName4"
-        android:layout_width="314dp"
-        android:layout_height="137dp"
+        android:layout_width="286dp"
+        android:layout_height="123dp"
 
         android:layout_marginTop="16dp"
         android:background="@drawable/round_border"
@@ -29,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="12dp"
         android:text="Rating"
         android:textColor="#000000"
         android:textSize="20dp"
@@ -37,12 +36,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/searchText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="4dp"
         android:text="Review"
         android:textColor="#000000"
         android:textSize="20dp"
@@ -54,13 +54,12 @@
         android:id="@+id/ratingBar6"
         android:layout_width="248dp"
         android:layout_height="55dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:progressTint="#FF5722"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchText1" />
-
 
     <Button
         android:id="@+id/addReviewBtn"
@@ -79,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/reviewPopupAddCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

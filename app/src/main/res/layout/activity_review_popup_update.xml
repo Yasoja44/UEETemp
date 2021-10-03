@@ -10,10 +10,10 @@
 
     <EditText
         android:id="@+id/reviewUpdateText"
-        android:layout_width="314dp"
-        android:layout_height="137dp"
+        android:layout_width="288dp"
+        android:layout_height="115dp"
 
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/round_border"
         android:inputType="textMultiLine"
         android:padding="14dp"
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="16dp"
         android:text="Rating"
         android:textColor="#000000"
         android:textSize="20dp"
@@ -36,12 +36,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/searchText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:text="Review"
         android:textColor="#000000"
         android:textSize="20dp"
@@ -53,13 +54,12 @@
         android:id="@+id/ratingBarUpdateReview"
         android:layout_width="248dp"
         android:layout_height="55dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:progressTint="#FF5722"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchText1" />
-
 
     <Button
         android:id="@+id/btnUpdateReview"
@@ -94,7 +94,7 @@
         app:layout_constraintTop_toBottomOf="@+id/reviewUpdateText" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/reviewPopupUpdateCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

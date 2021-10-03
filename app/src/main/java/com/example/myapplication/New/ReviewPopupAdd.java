@@ -10,6 +10,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
@@ -30,7 +31,8 @@ public class ReviewPopupAdd extends AppCompatActivity implements View.OnClickLis
 
     RatingBar r;
     EditText t;
-    Button b,b2;
+    Button b;
+    ImageButton b2;
     DatabaseReference dbRef;
     Review review;
     String pID,uID;

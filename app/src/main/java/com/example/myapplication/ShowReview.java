@@ -190,7 +190,7 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
 
         Intent intent;
         if(exists) {
-            intent = new Intent(this, ReviewPopupAdd.class);
+            intent = new Intent(this, ReviewPopupUpdate.class);
             intent.putExtras(extras);
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Exists",
@@ -199,7 +199,7 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
             toast.show();
 
         }else{
-            intent = new Intent(this, ReviewPopupUpdate.class);
+            intent = new Intent(this, ReviewPopupAdd.class);
             intent.putExtras(extras);
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Not Exists",
