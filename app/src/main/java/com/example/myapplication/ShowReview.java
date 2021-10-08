@@ -98,6 +98,8 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
             }
         });
 
+        isHere();
+
         initImageBitmaps();
 
 
@@ -182,7 +184,7 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
 
     public void Submit2() {
 
-        isHere();
+
 
         extras = new Bundle();
         extras.putString("PRODUCT_ID", pID);
