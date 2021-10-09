@@ -1,105 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Delivery.DeliveryAdd2">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/l1"
+            android:id="@+id/layer13"
             android:layout_width="wrap_content"
-            android:layout_height="81dp">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/back_viewDeilivery"
-            android:layout_width="101dp"
-            android:layout_height="90dp"
-            android:src="@drawable/back_left"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/back_viewDeilivery"
+                android:layout_width="101dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/back_left"
+                />
+
+            <ImageView
+                android:id="@+id/imgViewDelivery"
+                android:layout_width="160dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/store_logo"
+                 />
+
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/searchText5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginLeft="110dp"
             android:text="Receiver Info"
-            android:textColor="#FC1313"
+            android:textColor="#FFFFFF"
             android:textSize="35dp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        </LinearLayout>
+             />
 
-        <TextView
-            android:id="@+id/searchText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="44dp"
-            android:text="Address"
-            android:textColor="#000000"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchText5" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName2"
-            android:layout_width="378dp"
-            android:layout_height="117dp"
-
-            android:layout_marginTop="8dp"
-            android:background="@drawable/round_border"
-            android:inputType="textMultiLine"
-            android:paddingLeft="14dp"
-            android:textSize="14dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.512"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchText2"
-            tools:ignore="MissingConstraints" />
-
-<!--        <com.google.android.gms.maps.MapView-->
-<!--            android:id="@+id/mapView"-->
-<!--            android:layout_width="374dp"-->
-<!--            android:layout_height="307dp"-->
-<!--            android:layout_marginTop="28dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.567"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />-->
-
-        <fragment
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/frag1Map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"/>
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_below="@+id/searchText5"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/searchText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="90dp"
+                    android:layout_below="@+id/searchText5"
+                    android:text="Address"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName2"
+                    android:layout_width="378dp"
+                    android:layout_height="117dp"
+                    android:layout_below="@+id/searchText2"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/round_border"
+                    android:inputType="textMultiLine"
+                    android:paddingLeft="14dp"
+                    android:textSize="14dp"
+                    tools:ignore="MissingConstraints" />
 
 
-        <Button
-            android:id="@+id/addReviewBtn2"
-            android:layout_width="132dp"
-            android:layout_height="47dp"
+                <fragment
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:id="@+id/frag1Map"
+                    android:layout_margin="15dp"
+                    android:layout_below="@+id/editTextTextPersonName2"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
-            android:layout_marginTop="24dp"
-            android:background="@drawable/btn_round"
-            android:gravity="center"
-            android:onClick="onClick"
-            android:text="CONTINUE"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
-</ScrollView>
+                <Button
+                    android:id="@+id/addReviewBtn2"
+                    android:layout_width="132dp"
+                    android:layout_height="47dp"
+                    android:layout_marginLeft="140dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_below="@+id/frag1Map"
+                    android:layout_marginTop="24dp"
+                    android:textSize="20dp"
+                    android:background="@drawable/yas_button"
+                    android:onClick="onClick"
+                    android:text="CONTINUE"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </RelativeLayout>
+</LinearLayout>
