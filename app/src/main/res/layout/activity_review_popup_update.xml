@@ -12,7 +12,7 @@
         android:id="@+id/reviewPopupUpdateCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="280dp"
         android:background="#ffffff"
         app:srcCompat="@drawable/ic_baseline_cancel_24" />
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="35dp"
             android:text="Rating"
             android:textColor="#000000"
             android:textSize="20dp"
@@ -38,10 +38,10 @@
 
         <RatingBar
             android:id="@+id/ratingBarUpdateReview"
-            android:layout_width="248dp"
-            android:layout_height="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
             android:layout_marginTop="4dp"
-            android:layout_marginLeft="25dp"
             android:backgroundTint="@color/design_default_color_primary_variant"
             android:progressTint="#FF5722" />
 
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="35dp"
             android:text="Review"
             android:textColor="#000000"
             android:textSize="20dp"
@@ -78,7 +78,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
             android:layout_below="@+id/reviewUpdateText"
             android:orientation="horizontal">
 
@@ -89,7 +89,8 @@
 
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="23dp"
-                android:background="@drawable/btn_round"
+                android:background="@drawable/yas_button"
+                android:textSize="15dp"
                 android:gravity="center"
                 android:onClick="onClick"
                 android:text="UPDATE"
@@ -99,10 +100,10 @@
                 android:id="@+id/btnDeleteReview"
                 android:layout_width="132dp"
                 android:layout_height="47dp"
-
+                android:textSize="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="65dp"
-                android:background="@drawable/btn_round"
+                android:background="@drawable/yas_button"
                 android:gravity="center"
                 android:onClick="onClick"
                 android:text="DELETE"

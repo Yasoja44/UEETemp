@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 //import android.support.design.widget.FloatingActionButton;
 
@@ -55,9 +58,13 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_review);
 
-        //t = findViewById(R.id.textView4);
-        r = findViewById(R.id.ratingBar5);
-        //b = findViewById(R.id.button2);
+
+        r = (RatingBar)findViewById(R.id.ratingBar5);
+        LayerDrawable stars = (LayerDrawable) r.getProgressDrawable();
+        stars.getDrawable(2).setColorFilter(Color.rgb(255, 87, 34), PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(0).setColorFilter(Color.LTGRAY, PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(1).setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
+
 
         fb = findViewById(R.id.popButton);
 

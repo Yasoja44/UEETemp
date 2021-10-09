@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -55,6 +58,11 @@ public class ReviewPopupAdd extends AppCompatActivity implements View.OnClickLis
         //////////
 
         r = findViewById(R.id.ratingBar6);
+        LayerDrawable stars = (LayerDrawable) r.getProgressDrawable();
+        stars.getDrawable(2).setColorFilter(Color.rgb(255, 87, 34), PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(0).setColorFilter(Color.LTGRAY, PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(1).setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
+
         t = findViewById(R.id.editTextTextPersonName4);
         b = findViewById(R.id.addReviewBtn);
         b2 = findViewById(R.id.reviewPopupAddCancel);
