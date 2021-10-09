@@ -77,11 +77,11 @@ public class YasojaRecyclerViewAdapter extends RecyclerView.Adapter<YasojaRecycl
         RelativeLayout parentLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.person_photo);
-            imageName = itemView.findViewById(R.id.person_name);
-            imageName2 = itemView.findViewById(R.id.person_name2);
-            imageRating = itemView.findViewById(R.id.ratingBar7);
-            parentLayout = itemView.findViewById(R.id.parent_layout);
+            image = itemView.findViewById(R.id.yas_person_photo);
+            imageName = itemView.findViewById(R.id.yas_person_name);
+            imageName2 = itemView.findViewById(R.id.yas_person_name2);
+            imageRating = itemView.findViewById(R.id.yas_ratingBar7);
+            parentLayout = itemView.findViewById(R.id.yas_parent_layout);
         }
     }
 

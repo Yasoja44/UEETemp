@@ -9,7 +9,7 @@
 
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/yas_editTextTextPersonName4"
         android:layout_width="286dp"
         android:layout_height="123dp"
 
@@ -17,15 +17,17 @@
         android:background="@drawable/round_border"
         android:inputType="textMultiLine"
         android:padding="14dp"
-        android:textSize="14dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchText" />
+        app:layout_constraintTop_toBottomOf="@+id/yas_searchText" />
 
 
     <TextView
-        android:id="@+id/searchText1"
+        android:id="@+id/yas_searchText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
@@ -38,7 +40,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/searchText"
+        android:id="@+id/yas_searchText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
@@ -48,10 +50,10 @@
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar6" />
+        app:layout_constraintTop_toBottomOf="@+id/yas_ratingBar6" />
 
     <RatingBar
-        android:id="@+id/ratingBar6"
+        android:id="@+id/yas_ratingBar6"
         android:layout_width="248dp"
         android:layout_height="55dp"
         android:layout_marginTop="8dp"
@@ -59,10 +61,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchText1" />
+        app:layout_constraintTop_toBottomOf="@+id/yas_searchText1" />
 
     <Button
-        android:id="@+id/addReviewBtn"
+        android:id="@+id/yas_addReviewBtn"
         android:layout_width="132dp"
         android:layout_height="47dp"
 
@@ -76,10 +78,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+        app:layout_constraintTop_toBottomOf="@+id/yas_editTextTextPersonName4" />
 
     <ImageButton
-        android:id="@+id/reviewPopupAddCancel"
+        android:id="@+id/yas_reviewPopupAddCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

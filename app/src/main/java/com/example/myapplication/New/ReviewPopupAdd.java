@@ -57,15 +57,15 @@ public class ReviewPopupAdd extends AppCompatActivity implements View.OnClickLis
         getWindow().setLayout((int)(width*.8),(int)(height*.6));
         //////////
 
-        r = findViewById(R.id.ratingBar6);
+        r = findViewById(R.id.yas_ratingBar6);
         LayerDrawable stars = (LayerDrawable) r.getProgressDrawable();
         stars.getDrawable(2).setColorFilter(Color.rgb(255, 87, 34), PorterDuff.Mode.SRC_ATOP);
         stars.getDrawable(0).setColorFilter(Color.LTGRAY, PorterDuff.Mode.SRC_ATOP);
         stars.getDrawable(1).setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
 
-        t = findViewById(R.id.editTextTextPersonName4);
-        b = findViewById(R.id.addReviewBtn);
-        b2 = findViewById(R.id.reviewPopupAddCancel);
+        t = findViewById(R.id.yas_editTextTextPersonName4);
+        b = findViewById(R.id.yas_addReviewBtn);
+        b2 = findViewById(R.id.yas_reviewPopupAddCancel);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -84,9 +84,9 @@ public class ReviewPopupAdd extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.addReviewBtn: Submit();
+            case R.id.yas_addReviewBtn: Submit();
                 break;
-            case R.id.reviewPopupAddCancel: Exit();
+            case R.id.yas_reviewPopupAddCancel: Exit();
                 break;
         }
     }
@@ -98,14 +98,12 @@ public class ReviewPopupAdd extends AppCompatActivity implements View.OnClickLis
     public void Submit() {
 
 
-            Toast.makeText(getApplicationContext(), "Else", Toast.LENGTH_SHORT).show();
-
 
             dbRef = FirebaseDatabase.getInstance().getReference().child("Review");
             try {
 
                 if (TextUtils.isEmpty(t.getText().toString()))
-                    Toast.makeText(getApplicationContext(), "Empty Name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Empty Review", Toast.LENGTH_SHORT).show();
                 else {
 
                     review.setUserID(uID.trim());

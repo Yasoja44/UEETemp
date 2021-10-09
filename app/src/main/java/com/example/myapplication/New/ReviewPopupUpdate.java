@@ -57,17 +57,17 @@ public class ReviewPopupUpdate extends AppCompatActivity implements View.OnClick
         getWindow().setLayout((int)(width*.8),(int)(height*.6));
         //////////
 
-        r = findViewById(R.id.ratingBarUpdateReview);
+        r = findViewById(R.id.yas_ratingBarUpdateReview);
         LayerDrawable stars = (LayerDrawable) r.getProgressDrawable();
         stars.getDrawable(2).setColorFilter(Color.rgb(255, 87, 34), PorterDuff.Mode.SRC_ATOP);
         stars.getDrawable(0).setColorFilter(Color.LTGRAY, PorterDuff.Mode.SRC_ATOP);
         stars.getDrawable(1).setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
 
 
-        t = findViewById(R.id.reviewUpdateText);
-        b = findViewById(R.id.btnUpdateReview);
-        b2 = findViewById(R.id.btnDeleteReview);
-        b3 = findViewById(R.id.reviewPopupUpdateCancel);
+        t = findViewById(R.id.yas_reviewUpdateText);
+        b = findViewById(R.id.yas_btnUpdateReview);
+        b2 = findViewById(R.id.yas_btnDeleteReview);
+        b3 = findViewById(R.id.yas_reviewPopupUpdateCancel);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -87,11 +87,11 @@ public class ReviewPopupUpdate extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnUpdateReview: Update();
+            case R.id.yas_btnUpdateReview: Update();
                 break;
-            case R.id.btnDeleteReview: Delete();
+            case R.id.yas_btnDeleteReview: Delete();
                 break;
-            case R.id.reviewPopupUpdateCancel: Exit();
+            case R.id.yas_reviewPopupUpdateCancel: Exit();
                 break;
         }
     }

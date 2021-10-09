@@ -59,14 +59,14 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_show_review);
 
 
-        r = (RatingBar)findViewById(R.id.ratingBar5);
+        r = (RatingBar)findViewById(R.id.yas_ratingBar5);
         LayerDrawable stars = (LayerDrawable) r.getProgressDrawable();
         stars.getDrawable(2).setColorFilter(Color.rgb(255, 87, 34), PorterDuff.Mode.SRC_ATOP);
         stars.getDrawable(0).setColorFilter(Color.LTGRAY, PorterDuff.Mode.SRC_ATOP);
         stars.getDrawable(1).setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
 
 
-        fb = findViewById(R.id.popButton);
+        fb = findViewById(R.id.yas_popButton);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -85,12 +85,6 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot showSnapshot : dataSnapshot.getChildren()) {
-                    //t.append("Review: " + showSnapshot.child("review").getValue().toString() + "\n" +
-                    //        "Rating: " + showSnapshot.child("rating").getValue().toString() + "\n" +
-                    //        "User ID: " + showSnapshot.child("userID").getValue().toString() + "\n" +
-                     //       "Product ID: " + showSnapshot.child("productID").getValue().toString() + "\n\n"
-                    //);
-
 
                     float temp= Float.parseFloat(showSnapshot.child("rating").getValue().toString());
                     Rate(temp);
@@ -110,9 +104,16 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
         initImageBitmaps();
 
 
-
-
     }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//
+//        Intent refresh = new Intent(this, ShowReview.class);
+//        startActivity(refresh);
+//        this.finish();
+//    }
 
     private void initImageBitmaps() {
         dbRef = FirebaseDatabase.getInstance().getReference();
@@ -125,11 +126,6 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
                 for (DataSnapshot showSnapshot: dataSnapshot.getChildren()) {
                     Log.d(TAG, "initImageBitmaps: started");
                     mImageUrls.add("https://www.howtogeek.com/wp-content/uploads/2020/03/delivery-food.jpg.pagespeed.ce.8e-lIOJeD5.jpg");
-//                    mNames.add("Review: " + showSnapshot.child("review").getValue().toString() + "\n" +
-//                            "Rating: " + showSnapshot.child("rating").getValue().toString() + "\n" +
-//                            "User ID: " + showSnapshot.child("userID").getValue().toString() + "\n" +
-//                            "Product ID: " + showSnapshot.child("productID").getValue().toString() + "\n\n"
-//                    );
                     mNames.add(showSnapshot.child("userID").getValue().toString());
                     mNames2.add(showSnapshot.child("review").getValue().toString());
                     mRating.add(Float.parseFloat(showSnapshot.child("rating").getValue().toString()));
@@ -146,7 +142,7 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
 
     private void initRecyclerView() {
         Log.d(TAG, "initRecyclerView: started");
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.yas_recycler_view);
         YasojaRecyclerViewAdapter adapter = new YasojaRecyclerViewAdapter(mNames,mNames2,mRating,mImageUrls,this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -172,26 +168,15 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.popButton: Submit2();
+            case R.id.yas_popButton: Submit2();
                 break;
-            //case R.id.button2: Submit();
-                //break;
+
 
         }
     }
 
-//    public void Submit() {
-//        Intent intent = new Intent(this, AddReview.class);
-//        extras = new Bundle();
-//        extras.putString("PRODUCT_ID", pID);
-//        extras.putString("USER_ID", uID);
-//        intent.putExtras(extras);
-//        startActivity(intent);
-//    }
 
     public void Submit2() {
-
-
 
         extras = new Bundle();
         extras.putString("PRODUCT_ID", pID);
@@ -201,20 +186,12 @@ public class ShowReview extends AppCompatActivity implements View.OnClickListene
         if(exists) {
             intent = new Intent(this, ReviewPopupUpdate.class);
             intent.putExtras(extras);
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Exists",
-                    Toast.LENGTH_SHORT);
 
-            toast.show();
 
         }else{
             intent = new Intent(this, ReviewPopupAdd.class);
             intent.putExtras(extras);
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Not Exists",
-                    Toast.LENGTH_SHORT);
 
-            toast.show();
         }
         startActivity(intent);
 

@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
     <ImageButton
-        android:id="@+id/reviewPopupUpdateCancel"
+        android:id="@+id/yas_reviewPopupUpdateCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -25,7 +25,7 @@
         >
 
         <TextView
-            android:id="@+id/searchText1"
+            android:id="@+id/yas_searchText1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -37,7 +37,7 @@
 
 
         <RatingBar
-            android:id="@+id/ratingBarUpdateReview"
+            android:id="@+id/yas_ratingBarUpdateReview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -47,7 +47,7 @@
 
 
         <TextView
-            android:id="@+id/searchText"
+            android:id="@+id/yas_searchText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -59,7 +59,7 @@
 
 
         <EditText
-            android:id="@+id/reviewUpdateText"
+            android:id="@+id/yas_reviewUpdateText"
             android:layout_width="288dp"
             android:layout_height="115dp"
             android:layout_marginLeft="10dp"
@@ -67,7 +67,9 @@
             android:background="@drawable/round_border"
             android:inputType="textMultiLine"
             android:padding="14dp"
-            android:textSize="14dp" />
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
 
 
 
@@ -79,11 +81,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:layout_below="@+id/reviewUpdateText"
+            android:layout_below="@+id/yas_reviewUpdateText"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnUpdateReview"
+                android:id="@+id/yas_btnUpdateReview"
                 android:layout_width="132dp"
                 android:layout_height="47dp"
 
@@ -97,7 +99,7 @@
                 android:textColor="@color/white" />
 
             <Button
-                android:id="@+id/btnDeleteReview"
+                android:id="@+id/yas_btnDeleteReview"
                 android:layout_width="132dp"
                 android:layout_height="47dp"
                 android:textSize="15dp"
